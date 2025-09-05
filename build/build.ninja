@@ -34,7 +34,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/build/
+cmake_ninja_workdir = /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/build/
 # =============================================================================
 # Object build statements for STATIC_LIBRARY target libcommon
 
@@ -44,10 +44,10 @@ cmake_ninja_workdir = /home/nevin/Documents/CodingProjects/Quant/LowLatencyLoggi
 
 build cmake_object_order_depends_target_libcommon: phony || .
 
-build CMakeFiles/libcommon.dir/thread_example.cpp.o: CXX_COMPILER__libcommon_unscanned_ /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/thread_example.cpp || cmake_object_order_depends_target_libcommon
+build CMakeFiles/libcommon.dir/thread_example.cpp.o: CXX_COMPILER__libcommon_unscanned_ /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/thread_example.cpp || cmake_object_order_depends_target_libcommon
   DEP_FILE = CMakeFiles/libcommon.dir/thread_example.cpp.o.d
   FLAGS = -std=c++2a -Wall -Wextra -Werror -Wpedantic -std=gnu++20
-  INCLUDES = -I/home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework
+  INCLUDES = -I/home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem
   OBJECT_DIR = CMakeFiles/libcommon.dir
   OBJECT_FILE_DIR = CMakeFiles/libcommon.dir
 
@@ -76,10 +76,10 @@ build liblibcommon.a: CXX_STATIC_LIBRARY_LINKER__libcommon_ CMakeFiles/libcommon
 
 build cmake_object_order_depends_target_thread_example: phony || cmake_object_order_depends_target_libcommon
 
-build CMakeFiles/thread_example.dir/thread_example.cpp.o: CXX_COMPILER__thread_example_unscanned_ /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/thread_example.cpp || cmake_object_order_depends_target_thread_example
+build CMakeFiles/thread_example.dir/thread_example.cpp.o: CXX_COMPILER__thread_example_unscanned_ /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/thread_example.cpp || cmake_object_order_depends_target_thread_example
   DEP_FILE = CMakeFiles/thread_example.dir/thread_example.cpp.o.d
   FLAGS = -std=c++2a -Wall -Wextra -Werror -Wpedantic -std=gnu++20
-  INCLUDES = -I/home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework
+  INCLUDES = -I/home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem
   OBJECT_DIR = CMakeFiles/thread_example.dir
   OBJECT_FILE_DIR = CMakeFiles/thread_example.dir
 
@@ -107,7 +107,7 @@ build thread_example: CXX_EXECUTABLE_LINKER__thread_example_ CMakeFiles/thread_e
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/build && /usr/bin/ccmake -S/home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework -B/home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/build
+  COMMAND = cd /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/build && /usr/bin/ccmake -S/home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem -B/home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/build
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -119,7 +119,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/build && /usr/bin/cmake --regenerate-during-build -S/home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework -B/home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/build
+  COMMAND = cd /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/build && /usr/bin/cmake --regenerate-during-build -S/home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem -B/home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/build
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -137,7 +137,7 @@ build libcommon: phony liblibcommon.a
 # =============================================================================
 
 #############################################
-# Folder: /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/build
+# Folder: /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/build
 
 build all: phony liblibcommon.a thread_example
 
@@ -148,14 +148,14 @@ build all: phony liblibcommon.a thread_example
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/build/cmake_install.cmake: RERUN_CMAKE | /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.1/CMakeCCompiler.cmake CMakeFiles/4.1.1/CMakeCXXCompiler.cmake CMakeFiles/4.1.1/CMakeSystem.cmake
+build build.ninja /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/build/cmake_install.cmake: RERUN_CMAKE | /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSystem/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.1/CMakeCCompiler.cmake CMakeFiles/4.1.1/CMakeCXXCompiler.cmake CMakeFiles/4.1.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build /home/nevin/Documents/CodingProjects/Quant/LowLatencyLogginFramework/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.1/CMakeCCompiler.cmake CMakeFiles/4.1.1/CMakeCXXCompiler.cmake CMakeFiles/4.1.1/CMakeSystem.cmake: phony
+build /home/nevin/Documents/CodingProjects/Quant/LowLatencyTradingSysteLowLatencyTradingSystem/CMakeLists.txt /usr/share/cmake/Modules/CMakeCInformation.cmake /usr/share/cmake/Modules/CMakeCXXInformation.cmake /usr/share/cmake/Modules/CMakeCommonLanguageInclude.cmake /usr/share/cmake/Modules/CMakeGenericSystem.cmake /usr/share/cmake/Modules/CMakeInitializeConfigs.cmake /usr/share/cmake/Modules/CMakeLanguageInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInformation.cmake /usr/share/cmake/Modules/CMakeSystemSpecificInitialize.cmake /usr/share/cmake/Modules/Compiler/CMakeCommonCompilerMacros.cmake /usr/share/cmake/Modules/Compiler/GNU-C.cmake /usr/share/cmake/Modules/Compiler/GNU-CXX.cmake /usr/share/cmake/Modules/Compiler/GNU.cmake /usr/share/cmake/Modules/Internal/CMakeCLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCXXLinkerInformation.cmake /usr/share/cmake/Modules/Internal/CMakeCommonLinkerInformation.cmake /usr/share/cmake/Modules/Linker/GNU-C.cmake /usr/share/cmake/Modules/Linker/GNU-CXX.cmake /usr/share/cmake/Modules/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/GNU.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linker/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-C.cmake /usr/share/cmake/Modules/Platform/Linux-GNU-CXX.cmake /usr/share/cmake/Modules/Platform/Linux-GNU.cmake /usr/share/cmake/Modules/Platform/Linux-Initialize.cmake /usr/share/cmake/Modules/Platform/Linux.cmake /usr/share/cmake/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/4.1.1/CMakeCCompiler.cmake CMakeFiles/4.1.1/CMakeCXXCompiler.cmake CMakeFiles/4.1.1/CMakeSystem.cmake: phony
 
 
 #############################################
