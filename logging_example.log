@@ -1,0 +1,4 @@
+Logging a char:d an int:3 and an unsigned:67
+Logging a float:3.14 and double:3.14159
+Logging C-string: 'c_string nevin'
+Logging string: 'regular string nevin'

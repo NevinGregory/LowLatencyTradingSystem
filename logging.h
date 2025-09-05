@@ -1,9 +1,11 @@
 #pragma once
+#pragma once
+
+
 #include <string>
 #include <fstream>
 #include <cstdio>
 
-#include "types.h"
 #include "macros.h"
 #include "lf_queue.h"
 #include "thread_utils.h"
@@ -31,67 +33,10 @@ namespace Common {
 
     class Logger final {
         public:
-            explicit Logger(const std:;string &file_name)
-                : file_name_(file_name), queue_(LOG_QUEUE_SIZE) {
-                file_.open(file_name);
-                ASSERT(file_.is_open(), "Could not open log file:" +
-                        file_name);
-                logger_thread_ = createAndStartThread(-1,
-                        "Common/Logger", [this]() { flushQueue(); });
-                ASSERT(logger_thread_ != nullptr, "Failed to start
-                        Logger thread.");
-            }
-
-            ~Logger() {
-                std::cerr << "Flushing and closing Logger for " <<
-                    file_name_ << std::endl;
-
-                while (queue_.size()) {
-                    using namespace std::literals::chrono_literals;
-                    std::this_thread::sleep_for(1s);
-                }
-                running_ = false;
-                logger_thread_->join();
-
-                file_.close();
-            }
-
-            auto pushValue(const LogElement &log_element) noexcept {
-                *(queue_.getNextToWriteTo()) = log_element;
-                queue_.updateWriteIndex();
-            }
-
-            auto pushValue(const char value) noexcept {
-                pushValue(LogElement{LogType::CHAR, {.c=value}});
-            }
-
-            auto pushValue(const char *value) noexcept {
-                /* TODO
-                 * Implement edge cases for wrapping around indices at
-                 * end of queue
-                 */
-                while (*value) {
-                    pushValue(*value);
-                    ++value;
-                }
-            }
-
-            Logger() = delete;
-            Logger(const Logger &) = delete;
-            Logger(const Logger &&) = delete;
-            Logger &operator=(const Logger &) = delete;
-            Logger &operator=(const Logger &&) = delete;
-        private:
-            const std::string file_name_;
-            std::ofstream file_;
-            LFQueue<LogElement> queue_;
-            std::atomic<bool> running_ = {true};
-            std::thread *logger_thread_ nullptr;
-
             auto flushQueue() noexcept {
                 while (running_) {
                     for (auto next = queue_.getNextToRead();
-                            queue_.size() && next; next = queue_.getNextToRead();) {
+                            queue_.size() && next; next = queue_.getNextToRead()) {
                         switch(next->type_) {
                             case LogType::CHAR:
                                 file_ << next->u_.c; break;
@@ -120,5 +65,130 @@ namespace Common {
                     std::this_thread::sleep_for(1ms);
                 }
             }
+
+            explicit Logger(const std::string &file_name)
+                : file_name_(file_name), queue_(LOG_QUEUE_SIZE) {
+                file_.open(file_name);
+                ASSERT(file_.is_open(), "Could not open log file:" +
+                        file_name);
+                logger_thread_ = createAndStartThread(-1,
+                        "Common/Logger", [this]() { flushQueue(); });
+                ASSERT(logger_thread_ != nullptr, "Failed to start logger thread.");
+            }
+
+            ~Logger() {
+                std::cerr << "Flushing and closing Logger for " <<
+                    file_name_ << std::endl;
+
+                while (queue_.size()) {
+                    using namespace std::literals::chrono_literals;
+                    std::this_thread::sleep_for(1s);
+                }
+                running_ = false;
+                logger_thread_->join();
+
+                file_.close();
+            }
+
+            auto pushValue(const LogElement &log_element) noexcept {
+                *(queue_.getNextToWriteTo()) = log_element;
+                queue_.updateWriteIndex();
+            }
+
+            auto pushValue(const char value) noexcept {
+                pushValue(LogElement{LogType::CHAR, {.c=value}});
+            }
+
+            auto pushValue(const char *value) noexcept {
+                /* TODO
+                 * > Implement edge cases for wrapping around indices at
+                 * end of queue
+                 * > Consider using memcpy() instead of a loop.
+                 */
+                while (*value) {
+                    pushValue(*value);
+                    ++value;
+                }
+            }
+
+            auto pushValue(const std::string &value) noexcept {
+                pushValue(value.c_str());
+            }
+
+            auto pushValue(const int value) noexcept {
+                pushValue(LogElement{LogType::INTEGER, {.i = value}});
+            }
+
+            auto pushValue(const long value) noexcept {
+                pushValue(LogElement{LogType::LONG_INTEGER, {.l = value}});
+            }
+
+            auto pushValue(const long long value) noexcept {
+                pushValue(LogElement{LogType::LONG_LONG_INTEGER, {.ll = value}});
+            }
+
+            auto pushValue(const unsigned value) noexcept {
+                pushValue(LogElement{LogType::UNSIGNED_INTEGER, {.u = value}});
+            }
+
+            auto pushValue(const unsigned long value) noexcept {
+                pushValue(LogElement{LogType::UNSIGNED_LONG_INTEGER, {.ul = value}});
+            }
+
+            auto pushValue(const unsigned long long value) noexcept {
+                pushValue(LogElement{LogType::UNSIGNED_LONG_LONG_INTEGER, {.ull = value}});
+            }
+
+            auto pushValue(const float value) noexcept {
+                pushValue(LogElement{LogType::FLOAT, {.f = value}});
+            }
+
+            auto pushValue(const double value) noexcept {
+                pushValue(LogElement{LogType::DOUBLE, {.d = value}});
+            }
+
+            template<typename T, typename... A>
+            auto log(const char *s, const T &value, A... args)
+            noexcept {
+                while (*s) {
+                    if (*s == '%') {
+                        if (UNLIKELY(*(s + 1) == '%')) {
+                            ++s;
+                        } else {
+                            pushValue(value);
+                            log(s + 1, args...);
+                            return;
+                        }
+                    }
+                    pushValue(*s++);
+                }
+                FATAL("Extra arguments provided to log()");
+            }
+
+            auto log(const char *s) noexcept {
+                while (*s) {
+                    if (*s == '%') {
+                        if (UNLIKELY(*(s+1) == '%')) {
+                            ++s;
+                        } else {
+                            FATAL("Missing arguments to log()");
+                        }
+                    }
+
+                    pushValue(*s++);
+                }
+            }
+
+            Logger() = delete;
+            Logger(const Logger &) = delete;
+            Logger(const Logger &&) = delete;
+            Logger &operator=(const Logger &) = delete;
+            Logger &operator=(const Logger &&) = delete;
+        private:
+            const std::string file_name_;
+            std::ofstream file_;
+            LFQueue<LogElement> queue_;
+            std::atomic<bool> running_ = {true};
+            std::thread *logger_thread_ = nullptr;
     };
 }

@@ -1,0 +1,2 @@
+/usr/bin/ar qc liblibcommon.a CMakeFiles/libcommon.dir/lf_queue_example.cpp.o CMakeFiles/libcommon.dir/logging_example.cpp.o CMakeFiles/libcommon.dir/mem_pool_example.cpp.o CMakeFiles/libcommon.dir/thread_example.cpp.o
+/usr/bin/ranlib liblibcommon.a
